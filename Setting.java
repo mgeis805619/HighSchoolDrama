@@ -5,9 +5,7 @@
  */
 package highschooldrama;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -15,20 +13,20 @@ import javax.swing.ImageIcon;
  *
  * @author 805619
  */
-public class Bar {
+public class Setting {
     private int height;
     private int width;
-    public int x;
-    public int y;
+    private int x;
+    private int y;
     private Image img;
     private ImageIcon ii;
     
-     public Bar (int cWidth, int cHeight) {
-        x = 400;
-        y = 550;
-        this.height = 249;
-        this.width = 640;
-        this. ii = new ImageIcon(getClass().getResource("bar.png"));
+     public Setting (int cWidth, int cHeight) {
+        x = 0;
+        y = 0;
+        this.height = cHeight;
+        this.width = cWidth;
+        this. ii = new ImageIcon(getClass().getResource("classroom.jpg"));
         this.img = ii.getImage();
      }
      

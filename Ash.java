@@ -15,20 +15,20 @@ import javax.swing.ImageIcon;
  *
  * @author 805619
  */
-public class Bar {
+public class Ash {
     private int height;
     private int width;
-    public int x;
-    public int y;
+    private int x;
+    private int y;
     private Image img;
     private ImageIcon ii;
     
-     public Bar (int cWidth, int cHeight) {
-        x = 400;
-        y = 550;
-        this.height = 249;
-        this.width = 640;
-        this. ii = new ImageIcon(getClass().getResource("bar.png"));
+     public Ash (int cWidth, int cHeight) {
+        x = 350;
+        y = 200;
+        this.height = 1080;
+        this.width = 643;
+        this. ii = new ImageIcon(getClass().getResource("Ash.png"));
         this.img = ii.getImage();
      }
      
