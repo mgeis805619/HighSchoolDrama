@@ -23,10 +23,15 @@ public class HighSchoolDrama {
         Screen c = new Screen();
         j.add(c);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j.setSize(800, 600);
+        j.setSize(1440, 900);
         j.setVisible(true);
         j.setLocationRelativeTo(null);
-        
+        j.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                c.keyReleased(e);
+            }
+        });
     }
     
     }

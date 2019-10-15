@@ -24,11 +24,11 @@ public class Ann {
     private ImageIcon ii;
     
      public Ann (int cWidth, int cHeight) {
-        x = 500;
-        y = 200;
-        this.height = 200;
-        this.width = 200;
-        this. ii = new ImageIcon(getClass().getResource("707.png"));
+        x = 550;
+        y = 155;
+        this.height = 455;
+        this.width = 299;
+        this. ii = new ImageIcon(getClass().getResource("Ann.png"));
         this.img = ii.getImage();
      }
      
