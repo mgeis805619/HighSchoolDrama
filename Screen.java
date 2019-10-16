@@ -41,8 +41,6 @@ public class Screen extends JPanel {
         bar = new Bar(800,600);
         ash = new Ash(800, 600);
         ann = new Ann (800,600);
-        Music music = new Music();
-        music.music();
         populateStringArray();
         populateStringArray2();
     }
@@ -52,14 +50,21 @@ public class Screen extends JPanel {
         super.paintComponent(g);
         this.setBackground(Color.BLACK);
         setting.draw(g);
-        ash.draw(g);
         bar.draw(g);
         //ann.draw(g);
         g.setColor(Color.WHITE);
         g.drawString(message, bar.x+30, bar.y+85);
         g.drawString(who, bar.x+25, bar.y+33);
         
-        
+        //if (who == "Ash") {
+         //   ash.draw(g);
+        //}
+       // else if (who == "Player") {
+           // player.draw(g);
+       // }
+        //else if (who == "Ann") {
+         //   ann.draw(g);
+       // }
         
     }
     
