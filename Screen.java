@@ -56,15 +56,15 @@ public class Screen extends JPanel {
         g.drawString(message, bar.x+30, bar.y+85);
         g.drawString(who, bar.x+25, bar.y+33);
         
-        //if (who == "Ash") {
-         //   ash.draw(g);
-        //}
-       // else if (who == "Player") {
-           // player.draw(g);
-       // }
-        //else if (who == "Ann") {
-         //   ann.draw(g);
-       // }
+        if (who == "Ash") {
+            ash.draw(g);
+        }
+        else if (who == "Player") {
+            player.draw(g);
+        }
+        else if (who == "Ann") {
+            ann.draw(g);
+        }
         
     }
     
@@ -77,7 +77,7 @@ public class Screen extends JPanel {
                     + "\n high school. Something big is about to happen. Good luck!";//ash
             text[4] = "Ugh what was that? That was a weird dream.";//player
             text[5] = "*You check your phone and see that you have a text from Ann*";//player
-            text[6] = "Good morning<3.How are you?";//ann
+            text[6] = "Good morning.How are you?";//ann
             text[7] = "*You continue to text her*";//player
             text[8] = "Hey! I just woke up. I had the weirdest dream last night.";//player
             text[9] = "What?!?! It's almost 1. You need to go to bed earlier. A weird dream? What was it about?";//ann
