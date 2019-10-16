@@ -41,21 +41,35 @@ public class Screen extends JPanel {
         bar = new Bar(800,600);
         ash = new Ash(800, 600);
         ann = new Ann (800,600);
+        player = new Player(800,600);
         populateStringArray();
         populateStringArray2();
     }
+    
+    
+    
+    public String[]name = new String[20];
+        public void populateStringArray2() {
+            name[0] = "Ash";
+            name[1] = "Ash";
+            name[2] = "Ash";
+            name[3] = "Ash";
+            name[4] = "Player";
+            name[5] = "Player";
+            name[6] = "Ann";
+            name[7] = "Player";
+            name[8] = "Player";
+            name[9] = "Ann";
+            name[10] = "Player";
+            name[11] = "Ann";
+                    
+        }
     
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.setBackground(Color.BLACK);
         setting.draw(g);
-        bar.draw(g);
-        //ann.draw(g);
-        g.setColor(Color.WHITE);
-        g.drawString(message, bar.x+30, bar.y+85);
-        g.drawString(who, bar.x+25, bar.y+33);
-        
         if (who == "Ash") {
             ash.draw(g);
         }
@@ -65,6 +79,11 @@ public class Screen extends JPanel {
         else if (who == "Ann") {
             ann.draw(g);
         }
+           
+        bar.draw(g);
+        g.setColor(Color.WHITE);
+        g.drawString(message, bar.x+30, bar.y+85);
+        g.drawString(who, bar.x+25, bar.y+33);
         
     }
     
@@ -86,22 +105,7 @@ public class Screen extends JPanel {
                     
         }
     
-        public String[]name = new String[20];
-        public void populateStringArray2() {
-            name[0] = "Ash";
-            name[1] = "Ash";
-            name[2] = "Ash";
-            name[3] = "Ash";
-            name[4] = "Player";
-            name[5] = "Player";
-            name[6] = "Ann";
-            name[7] = "Player";
-            name[8] = "Player";
-            name[9] = "Ann";
-            name[10] = "Player";
-            name[11] = "Ann";
-                    
-        }
+        
         
     public void next() {
         t += 1;

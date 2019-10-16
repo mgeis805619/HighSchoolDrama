@@ -24,11 +24,11 @@ public class Player {
     private ImageIcon ii;
     
      public Player (int cWidth, int cHeight) {
-        x = 500;
-        y = 200;
-        this.height = 200;
-        this.width = 200;
-        this. ii = new ImageIcon(getClass().getResource("707.png"));
+        x = 400;
+        y = 100;
+        this.height = 700;
+        this.width = 780;
+        this. ii = new ImageIcon(getClass().getResource("jojo.png"));
         this.img = ii.getImage();
      }
      
