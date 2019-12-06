@@ -20,7 +20,10 @@ import java.awt.event.KeyEvent;
 public class Screen extends JPanel {
     private Timer timer;
     private Player player;
-    private Setting setting;
+    private Classroom setting;
+    private MainMenu mainMenu;
+    private StartButton startButton;
+    private ExitButton exitButton;
     private Bar bar;
     private Ash ash;
     private Ann ann;
@@ -31,13 +34,19 @@ public class Screen extends JPanel {
     public int t = 0;
     public int c = 0;
     public int s = 0;
+    public boolean main;
+    
+
     
     public Screen() {
         super();
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
         player = new Player(800, 600);
-        setting = new Setting(width, height);
+        setting = new Classroom(width, height);
+        mainMenu = new MainMenu(width, height);
+        startButton = new StartButton (800,600);
+        exitButton = new ExitButton (800,600);
         bar = new Bar(800,600);
         ash = new Ash(800, 600);
         ann = new Ann (800,600);
@@ -54,19 +63,26 @@ public class Screen extends JPanel {
             name[1] = "Ash";
             name[2] = "Ash";
             name[3] = "Ash";
-            name[4] = "Player";
+            name[4] = "Ash";
             name[5] = "Player";
-            name[6] = "Ann";
-            name[7] = "Player";
+            name[6] = "Player";
+            name[7] = "Ann";
             name[8] = "Player";
-            name[9] = "Ann";
-            name[10] = "Player";
-            name[11] = "Ann";
+            name[9] = "Player";
+            name[10] = "Ann";
+            name[11] = "Player";
+            name[12] = "Ann";
                     
         }
     
     @Override
     public void paintComponent(Graphics g) {
+        if(main = true) {
+            mainMenu.draw(g);
+            startButton.draw(g);
+            exitButton.draw(g);
+        }
+        else {
         super.paintComponent(g);
         this.setBackground(Color.BLACK);
         setting.draw(g);
@@ -84,34 +100,47 @@ public class Screen extends JPanel {
         g.setColor(Color.WHITE);
         g.drawString(message, bar.x+30, bar.y+85);
         g.drawString(who, bar.x+25, bar.y+33);
+        }
+      
         
     }
     
      public String[]text = new String[20];
         public void populateStringArray() {
-            text[0] = "Hey I'm Ash!";//ash///house
-            text[1] = "What's your name?";//ash
-            text[2] = "Hey player! Welcome to the game!";//ash
-            text[3] = "I'll let you in on what's going on. You've been dating this girl Ann since freshman year of "//ash
-                    + "\n high school. Something big is about to happen. Good luck!";//ash
-            text[4] = "Ugh what was that? That was a weird dream.";//player
-            text[5] = "*You check your phone and see that you have a text from Ann*";//player
-            text[6] = "Good morning.How are you?";//ann
-            text[7] = "*You continue to text her*";//player
-            text[8] = "Hey! I just woke up. I had the weirdest dream last night.";//player
-            text[9] = "What?!?! It's almost 1. You need to go to bed earlier. A weird dream? What was it about?";//ann
-            text[10] = "Hah. Maybe I just play too many video games. But yeah I was talking to Ash as if I was in some game. He talked about you";//player
-            text[11] = "KJKJKJ. You really are playing too many video games if you're dreaming of being in one";//ann///house
+            text[0] = "";
+            text[1] = "Hey I'm Ash!";//ash///class
+            text[2] = "What's your name?";//ash//class
+            text[3] = "Hey player! Welcome to the game!";//ash//class
+            text[4] = "I'll let you in on what's going on. You've been dating this girl Ann since freshman year of" //ash//class
+                    + " high school. Something big is about to happen. Good luck!";//ash//class
+            text[5] = "Ugh what was that? That was a weird dream.";//player//house
+            text[6] = "*You check your phone and see that you have a text from Ann*";//player
+            text[7] = "Good morning. How are you?";//ann
+            text[8] = "*You continue to text her*";//player
+            text[9] = "Hey! I just woke up. I had the weirdest dream last night.";//player
+            text[10] = "What?!?! It's almost 1. You need to go to bed earlier. A weird dream? What was it about?";//ann
+            text[11] = "Hah. Maybe I just play too many video games. But yeah I was talking to Ash as if I was in some game. He talked about you";//player
+            text[12] = "KJKJKJ. You really are playing too many video games if you're dreaming of being in one";//ann///house
+            text[13] = "Hey! It's not my fault I have nothing else to do other than work and school.";//player//house
+            text[14] = "Uh oh. I forgot about school. I got to go get ready, you should too.";//ann//house
+            text[15] = "Alright! See ya!";//player//house
+            text[16] = "*You get ready and go to school*";//player//house
+            text[17] = "";
+            
                     
         }
     
-        
-        
+           
     public void next() {
-        t += 1;
+        if (main == false) {
+        t  += 1;
         message = text[t];
         c += 1;
         who = name[c];
+        }
+        else {
+            
+        }
     }
    
     public void keyReleased(KeyEvent e) {
