@@ -7,6 +7,9 @@ package highschooldrama;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Scanner;
 import javax.swing.JFrame;
 
 /**
@@ -19,6 +22,9 @@ public class HighSchoolDrama {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+        System.out.println("What is your caveman's name?");
+        String username = kb.nextLine();
         JFrame j = new JFrame("High School Drama");
         Screen c = new Screen();
         j.add(c);
@@ -32,6 +38,12 @@ public class HighSchoolDrama {
                 c.keyReleased(e);
             }
         });
+            j.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) {
+                c.mousePressed(e);
+            }
+        });
+
     }
     
     }

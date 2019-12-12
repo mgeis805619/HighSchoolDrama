@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 
 /**
@@ -18,12 +22,15 @@ import java.awt.event.KeyEvent;
  * @author 805619
  */
 public class Screen extends JPanel {
+    private final String playerName;
     private Timer timer;
     private Player player;
     private Classroom setting;
     private MainMenu mainMenu;
     private StartButton startButton;
     private ExitButton exitButton;
+    private MainMenuButton menuButton;
+    private SaveButton saveButton;
     private Bar bar;
     private Ash ash;
     private Ann ann;
@@ -34,7 +41,7 @@ public class Screen extends JPanel {
     public int t = 0;
     public int c = 0;
     public int s = 0;
-    public boolean main;
+    public boolean main = true;
     
 
     
@@ -47,10 +54,13 @@ public class Screen extends JPanel {
         mainMenu = new MainMenu(width, height);
         startButton = new StartButton (800,600);
         exitButton = new ExitButton (800,600);
+        menuButton = new MainMenuButton (800,600);
+        saveButton = new SaveButton (800,600);
         bar = new Bar(800,600);
         ash = new Ash(800, 600);
         ann = new Ann (800,600);
         player = new Player(800,600);
+        this.playerName = playerName;
         populateStringArray();
         populateStringArray2();
     }
@@ -77,7 +87,7 @@ public class Screen extends JPanel {
     
     @Override
     public void paintComponent(Graphics g) {
-        if(main = true) {
+        if(main == true) {
             mainMenu.draw(g);
             startButton.draw(g);
             exitButton.draw(g);
@@ -95,7 +105,8 @@ public class Screen extends JPanel {
         else if (who == "Ann") {
             ann.draw(g);
         }
-           
+        saveButton.draw(g);
+        menuButton.draw(g);
         bar.draw(g);
         g.setColor(Color.WHITE);
         g.drawString(message, bar.x+30, bar.y+85);
@@ -142,11 +153,59 @@ public class Screen extends JPanel {
             
         }
     }
+    
+    public void start() {
+        main = false;
+    }
+    
+    public void close() {
+       System.exit(0);
+    }
+    
+    
    
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             next();System.out.println("Spacebar pressed"); 
         }  
+    }
+
+    void mousePressed(MouseEvent e) {
+        if (main == true) {
+            if ( e.getX() > 50 && e.getX() < 350 && e.getY() > 250 && e.getY() < 550) {
+            main = false;
+            String pathname = "H:/Variables.txt";
+            File file = new File(pathname);
+            Scanner input = null;
+            try
+            {
+            input = new Scanner(file);
+            }
+            catch(FileNotFoundException ex)
+{
+            System.out.println("*** Cannot open " + pathname + " ***");
+            System.exit(1); 
+            }
+
+            }
+            else if ( e.getX() > 30 && e.getX() < 330 && e.getY() > 500 && e.getY() < 850) {
+            System.exit(0);    
+            }
+            else {
+                
+            }
+        }
+        else if (main == false) {
+            if ( e.getX() > 1240 && e.getX() < 1440 && e.getY() > 0 && e.getY() < 200) {
+            main = true;
+            }
+            else if ( e.getX() > 1240 && e.getX() < 1440 && e.getY() > 150 && e.getY() < 350) {
+              
+            }
+            else {
+                
+            }
+        }
     }
     private class ScheduleTask extends TimerTask {
 
