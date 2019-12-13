@@ -22,7 +22,6 @@ import java.util.Scanner;
  * @author 805619
  */
 public class Screen extends JPanel {
-    private final String playerName;
     private Timer timer;
     private Player player;
     private Classroom setting;
@@ -39,9 +38,11 @@ public class Screen extends JPanel {
     public String message = "text";
     public String who = "name";
     public int t = 0;
+    public int d = 0;
     public int c = 0;
     public int s = 0;
     public boolean main = true;
+    public boolean option1 = true;
     
 
     
@@ -60,7 +61,6 @@ public class Screen extends JPanel {
         ash = new Ash(800, 600);
         ann = new Ann (800,600);
         player = new Player(800,600);
-        this.playerName = playerName;
         populateStringArray();
         populateStringArray2();
     }
@@ -151,6 +151,15 @@ public class Screen extends JPanel {
         }
         else {
             
+        }
+    }
+    
+    public void decesion() {
+        if (option1 == true) {
+            d += 1;
+        }
+        else if (option1 == false) {
+           d -= 1; 
         }
     }
     
