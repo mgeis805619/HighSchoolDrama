@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -209,6 +210,21 @@ public class Screen extends JPanel {
             main = true;
             }
             else if ( e.getX() > 1240 && e.getX() < 1440 && e.getY() > 150 && e.getY() < 350) {
+              String pathname = "output.txt";
+              File file = new File(pathname);
+              PrintWriter output = null;
+       
+              try {
+                  output = new PrintWriter(file);
+              }
+              catch (FileNotFoundException ex)   
+              {
+              System.out.println("*** Cannot create " + pathname + " ***");
+              System.exit(1); //quit the program
+              }
+              output.println("Metric measures:");
+              output.printf("%2d kb = %5.3f lbs\n", 1, 2.2046226);
+              output.close();
               
             }
             else {
